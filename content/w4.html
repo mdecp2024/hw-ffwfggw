@@ -141,10 +141,72 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">HW 4 << <a href='HW 4.html'>Previous</a> <a href='Final Report.html'>Next</a> >> Final Report<br /><h1>HW 4 Exam</h1>
-<p>每六人為一組進行協同程式練習</p>
-<p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 4 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<br />HW 4 << <a href='HW 4.html'>Previous</a> <a href='Final Report.html'>Next</a> >> Final Report</div>
+    <div id="tipue_search_content">w10-1 << <a href='w10-1.html'>Previous</a> <a href='w5.html'>Next</a> >> w5<br /><h1>w4</h1>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from coppeliasim_zmqremoteapi_client import RemoteAPIClient
+import time
+import keyboard
+
+# 利用 zmqRemoteAPI 以 23000 對場景伺服器進行連線
+client = RemoteAPIClient('[::1]', 23000)
+# 以 getObject 方法取得場景物件
+sim = client.getObject('sim')
+box = sim.getObject('/box')
+
+# 啟動模擬
+sim.startSimulation()
+
+# 設定立方體的尺寸和初始位置
+cube_size = 0.2  # 20 cm
+spacing = 0.5  # 50 cm 之間的距離（可根據需求調整）
+
+# 擺放立方體的行數和每行的數量
+rows = 5  # 從第 1 行到第 5 行
+cubes_in_row = [1, 3, 5, 7, 9]  # 每行立方體的數量
+
+# 在正的 Y 方向擺放立方體
+for row in range(rows):
+    # 計算每行的起始 x 位置，讓其對稱
+    start_row_x = - (cubes_in_row[row] - 1) * spacing / 2
+    
+    for col in range(cubes_in_row[row]):
+        # 計算每個立方體的位置
+        x_position = start_row_x + col * spacing
+        y_position = row * spacing  # 垂直方向上每行間距
+        
+        # 建立立方體
+        cube_handle = sim.createPrimitiveShape(sim.primitiveshape_cuboid, [cube_size, cube_size, cube_size], 0)
+        sim.setObjectPosition(cube_handle, -1, [x_position, y_position, cube_size / 2])  # z 方向上升到立方體的中心
+
+# 在負的 Y 方向擺放立方體
+for row in range(rows):
+    # 計算每行的起始 x 位置，讓其對稱
+    start_row_x = - (cubes_in_row[row] - 1) * spacing / 2
+    
+    for col in range(cubes_in_row[row]):
+        # 計算每個立方體的位置
+        x_position = start_row_x + col * spacing
+        y_position = -row * spacing  # 負的 Y 方向
+        
+        # 建立立方體
+        cube_handle = sim.createPrimitiveShape(sim.primitiveshape_cuboid, [cube_size, cube_size, cube_size], 0)
+        sim.setObjectPosition(cube_handle, -1, [x_position, y_position, cube_size / 2])  # z 方向上升到立方體的中心
+
+# 完成立方體的擺放
+print("立方體已成功擺放!")
+
+# 設定主迴圈
+while True:
+    # 在這裡可以進行其他模擬操作
+    time.sleep(0.1)  # 確保循環不會過快
+
+    if keyboard.is_pressed('q'):
+        # 可以按下 q 鍵跳出重複執行迴圈
+        break
+
+# 終止模擬
+sim.stopSimulation()
+</pre>
+<br />w10-1 << <a href='w10-1.html'>Previous</a> <a href='w5.html'>Next</a> >> w5</div>
         
     <!-- footer -->
       <div class="container">
