@@ -109,7 +109,8 @@
 <p style="padding-left: 30px;">\[<br/>t = 3 \times \frac{\log_{10}(500)}{\log_{10}(2)}<br/>\]</p>
 <p style="padding-left: 30px;">Python Code to Calculate \( t \): <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/d9558707c7e1765c1e6885ddc6919e32265c6d23/problem-set2-1_py.txt">problem-set2-1.py</a></p>
 <p></p>
-</div><h2>w4</h2>
+</div>
+<h2>w4</h2>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from coppeliasim_zmqremoteapi_client import RemoteAPIClient
 import time
 import keyboard
@@ -190,6 +191,10 @@ sim.stopSimulation()
 <p></p>
 <p></p>
 <p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
 <p><main>
 <div class="container">
 <div>
@@ -197,6 +202,10 @@ sim.stopSimulation()
 </div>
 </div>
 </main></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
 <p></p>
 <p></p>
 <p></p>
@@ -264,7 +273,7 @@ def print_pyramid(n):
 <p></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/NMe0zS9vFXI?si=O6hWQ0atESKCmQuk" title="YouTube video player" width="560"></iframe></p>
 <p></p>
-<h2>w10</h2>
+<h2>w11</h2>
 <h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
@@ -273,8 +282,7 @@ def print_pyramid(n):
 <p>PART 2: Introduction to lists and if/else statements</p>
 <p>PART 3: Introduction to the for loop</p>
 <p>完成上述流程整理後, 請將 HW2 自評分數輸入 cp2024 自評表單中.</p>
-<p></p>
-<h2>HW 2 Exam</h2>
+<p></p><h2>HW 2 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
 <p><br/><br/>w7</p>
@@ -438,7 +446,7 @@ doc["add1to100"].bind('click', add)
 <p><!-- add 1 to 100 結束--></p>
 <!-- editor1 開始 -->
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
-<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
+<div id="kw_editor1" style="width: 600px; height: 300px;">vfrom browser import html<br/>from browser import document as doc<br/><br/># 建立 Canvas 元素並設置大小<br/>canvas = html.CANVAS(width=400, height=400)<br/>brython_div = doc["brython_div1"]<br/>brython_div &lt;= canvas<br/><br/># 每一格的像素大小<br/>gs = 20<br/><br/># 取得 2D 渲染上下文<br/>ctx = canvas.getContext("2d")<br/><br/>def dRect(lux, luy, w, h, s=1, c='#ff0000'):<br/> """繪製矩形邊框"""<br/> ctx.lineWidth = s<br/> ctx.strokeStyle = c<br/> ctx.beginPath()<br/> ctx.rect(lux, luy, w, h)<br/> ctx.stroke()<br/><br/>def grid(width, height, grid_pix):<br/> """繪製網格"""<br/> for i in range(width):<br/> for j in range(height):<br/> dRect(i * grid_pix, j * grid_pix, grid_pix, grid_pix, 1, "lightgrey")<br/><br/>def fill(x, y, color):<br/> """填充顏色"""<br/> ctx.fillStyle = color<br/> ctx.fillRect(x * gs, y * gs, gs, gs)<br/><br/># 設定圓形的半徑和圓心位置（格子座標）<br/>r = 5 # 圓的半徑（以格子為單位）<br/>cx, cy = 5, 5 # 圓心位置（格子座標）<br/><br/># 繪製 10x10 的網格<br/>grid(10, 10, gs)<br/><br/># 填充圓形區域<br/>for i in range(10):<br/> for j in range(10):<br/> # 計算每個格子到圓心的距離<br/> distance = (i - cx) ** 2 + (j - cy) ** 2<br/> if distance &lt;= r ** 2: # 判斷是否在圓形內<br/> fill(i, j, "black") # 如果在圓形內，填充黑色</div>
 <p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
 <p><!-- 存擋表單開始 --></p>
 <form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src1', 'kw_filename1');" type="submit" value="Save"/></form>
