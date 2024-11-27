@@ -161,7 +161,42 @@ center = n//2
 for y in range(n):
     for x in range(n):
         print("(",x,",",y,")",sep="")</pre>
-<p></p><br />w7 << <a href='w7.html'>Previous</a> <a href='HW 2.html'>Next</a> >> HW 2</div>
+<p>    <a href="https://mdecp2024.github.io/hw--ffwfggw/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/2dd2796e8089126ebfeb90e82734776b/raw/d8141137cb0d29ae703542b92b24f373ca285abc/hw4.py"> 程式2</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 400,height = 400)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+
+# 每一格的 pixel 數
+gs = 20
+
+# gs*tc = canvas width and height
+
+ctx = canvas.getContext("2d")
+
+width=11
+height=11
+
+"""
+ctx.lineWidth = 1
+ctx.strokeStyle = 'lightgrey'
+ctx.beginPath()
+#ctx.rect(i*gs, j*gs, gs, gs)
+ctx.rect(0, 0, 150, 100)
+ctx.stroke()
+"""
+for i in range(width): 
+    for j in range(height):
+     #dRect(i*gs, j*gs, gs, gs, 1, "lightgrey")
+     ctx.lineWidth=1
+     ctx.strokeStyle='lightgrey'
+     ctx.beginPath();
+     ctx.rect(i*gs,j*gs,gs,gs)
+     ctx.stroke();</pre>
+<p><br/><br/></p><br />w7 << <a href='w7.html'>Previous</a> <a href='HW 2.html'>Next</a> >> HW 2</div>
         
     <!-- footer -->
       <div class="container">
