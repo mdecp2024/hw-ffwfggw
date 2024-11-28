@@ -289,14 +289,80 @@ def print_pyramid(n):
 <p>3. 完成上列題目後, 請利用 Youtube 影片<span>簡報</span>個人的解題過程與心得.</p>
 <p></p>
 <p></p>
-<p></p><h2>w11</h2>
+<p></p><h2>w11 hw</h2>
 <p>1.  已知可以用 Python 程式<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5e6eda7a004c15fa7262b9a80bfa4af6/raw/c2225ac22f32ee8485a630b42cf3f4d8567bb661/up_to_down_pyramid.py">由上往下列印三角形 *</a>, 或<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5e6eda7a004c15fa7262b9a80bfa4af6/raw/56793c72d4495d564e3cc6214ed5fb68dbd2b21d/left_to_right_pyramid.py">由左往右列印三角形 *</a>, 請將此程式延伸到可以在 10x10 的字元區域中, 以 "*" 字元列印出圓型區域. 完成後請將程式碼存入個人 Gist 後, 直接在個人作業網站中的 Brython 頁面中執行. (提示: ?src=gist_script_URL)</p>
 <p><span>解: <a href="https://mdecp2024.github.io/hw--ffwfggw/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/2728ae5a530b1c629684e6b8ad130cb4/raw/d67a1a33347acbcfb0e4dffbfa6c37c0a62823e3/hw1.py">"*" 字元</a></span></p>
-<p></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">n = 10  # 定義區域大小為 10x10
+center = (5, 5)  # 圓心位置
+radius = 4  # 半徑
+
+# 遍歷 10x10 的每一個位置
+for y in range(n):
+    for x in range(n):
+        # 計算 (x, y) 距離圓心 (5, 5) 的距離
+        distance = ((x - center[0])**2 + (y - center[1])**2)**0.5
+        # 若距離小於等於半徑，則顯示 *
+        if distance &lt;= radius:
+            print('*', end='')
+        else:
+            print(' ', end='')
+    # 換行，開始新的一行
+    print()</pre>
+<p><br/><br/></p>
 <p>2. 已知可以在網頁中利用 Brython 繪製方格與塗色, 如下連結, 請設法修改此一程式, 直接將程式存入個人的 Gist, 並利用黑色方塊圍出一個圓形區域.</p>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/f95909804a1f134963cade8463eeb9bd32129ea8/grid_line_and_fill_in_Brython.py">網頁上的方格與塗色</a></p>
 <p><span>解:<a href="https://mdecp2024.github.io/hw--ffwfggw/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/fbe7188efdf08c5e75302174bdf9c018/raw/412f3ec405491baf5ea0e6226b55238244750d00/hw2.py">請設法修改此一程式</a></span></p>
-<p><span></span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+
+# 利用 HTML 建立畫布超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+
+# 每格的像素數
+gs = 20  # 每個格子的大小
+
+# 取得畫布的 2D 繪圖上下文
+ctx = canvas.getContext("2d")
+
+# 繪製矩形的函數
+def dRect(lux, luy, w, h, s=1, c='#ff0000'):
+    ctx.lineWidth = s
+    ctx.strokeStyle = c
+    ctx.beginPath()
+    ctx.rect(lux, luy, w, h)
+    ctx.stroke()
+
+# 繪製 10x10 的格子
+def grid(width, height, grid_pix):
+    for i in range(width):
+        for j in range(height):
+            dRect(i * grid_pix, j * grid_pix, grid_pix, grid_pix, 1, "lightgrey")
+
+# 填充格子的函數
+def fill(x, y, color):
+    ctx.fillStyle = color
+    ctx.fillRect(x - 1, y - 1, gs, gs)
+
+# 在方格內繪製圓形
+def draw_circle(center_x, center_y, radius, color):
+    # 計算圓心的座標在畫布上的位置 (需要考慮格子的大小)
+    cx = center_x * gs + gs / 2
+    cy = center_y * gs + gs / 2
+    
+    ctx.fillStyle = color
+    ctx.beginPath()
+    ctx.arc(cx, cy, radius * gs, 0, 2 * 3.14159)  # 設定圓心座標與半徑
+    ctx.fill()
+
+# 繪製 10x10 的格子
+grid(10, 10, gs)
+
+# 繪製圓形，圓心在 (5,5)，半徑為 3
+draw_circle(5, 5, 3, "black")
+</pre>
+<p><span><br/></span></p>
 <p>3. 完成上列題目後, 請利用 Youtube 影片<span>簡報</span>個人的解題過程與心得.</p>
 <p></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/6eAKedqWN5U?si=LYy0u8ZG07IBooWo" title="YouTube video player" width="560"></iframe></p>
