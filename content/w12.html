@@ -141,72 +141,21 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w10 << <a href='w10.html'>Previous</a> <a href='w5.html'>Next</a> >> w5<br /><h1>w4</h1>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from coppeliasim_zmqremoteapi_client import RemoteAPIClient
-import time
-import keyboard
-
-# 利用 zmqRemoteAPI 以 23000 對場景伺服器進行連線
-client = RemoteAPIClient('[::1]', 23000)
-# 以 getObject 方法取得場景物件
-sim = client.getObject('sim')
-box = sim.getObject('/box')
-
-# 啟動模擬
-sim.startSimulation()
-
-# 設定立方體的尺寸和初始位置
-cube_size = 0.2  # 20 cm
-spacing = 0.5  # 50 cm 之間的距離（可根據需求調整）
-
-# 擺放立方體的行數和每行的數量
-rows = 5  # 從第 1 行到第 5 行
-cubes_in_row = [1, 3, 5, 7, 9]  # 每行立方體的數量
-
-# 在正的 Y 方向擺放立方體
-for row in range(rows):
-    # 計算每行的起始 x 位置，讓其對稱
-    start_row_x = - (cubes_in_row[row] - 1) * spacing / 2
-    
-    for col in range(cubes_in_row[row]):
-        # 計算每個立方體的位置
-        x_position = start_row_x + col * spacing
-        y_position = row * spacing  # 垂直方向上每行間距
-        
-        # 建立立方體
-        cube_handle = sim.createPrimitiveShape(sim.primitiveshape_cuboid, [cube_size, cube_size, cube_size], 0)
-        sim.setObjectPosition(cube_handle, -1, [x_position, y_position, cube_size / 2])  # z 方向上升到立方體的中心
-
-# 在負的 Y 方向擺放立方體
-for row in range(rows):
-    # 計算每行的起始 x 位置，讓其對稱
-    start_row_x = - (cubes_in_row[row] - 1) * spacing / 2
-    
-    for col in range(cubes_in_row[row]):
-        # 計算每個立方體的位置
-        x_position = start_row_x + col * spacing
-        y_position = -row * spacing  # 負的 Y 方向
-        
-        # 建立立方體
-        cube_handle = sim.createPrimitiveShape(sim.primitiveshape_cuboid, [cube_size, cube_size, cube_size], 0)
-        sim.setObjectPosition(cube_handle, -1, [x_position, y_position, cube_size / 2])  # z 方向上升到立方體的中心
-
-# 完成立方體的擺放
-print("立方體已成功擺放!")
-
-# 設定主迴圈
-while True:
-    # 在這裡可以進行其他模擬操作
-    time.sleep(0.1)  # 確保循環不會過快
-
-    if keyboard.is_pressed('q'):
-        # 可以按下 q 鍵跳出重複執行迴圈
-        break
-
-# 終止模擬
-sim.stopSimulation()
-</pre>
-<br />w10 << <a href='w10.html'>Previous</a> <a href='w5.html'>Next</a> >> w5</div>
+    <div id="tipue_search_content">w11_hw << <a href='w11_hw.html'>Previous</a> <a href='HW 2.html'>Next</a> >> HW 2<br /><h1>w12</h1>
+<p>第一題                  </p>
+<p><code>1-1<a href="https://mdecp2024.github.io/hw--ffwfggw/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/fd5e9e791f2e69e0fefc3392ddc20f5c/raw/503d28218226208ae03f9f31fbf3dc276d2805c0/1.py">解 </a> 1-2<a href="https://mdecp2024.github.io/hw--ffwfggw/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/fd5e9e791f2e69e0fefc3392ddc20f5c/raw/503d28218226208ae03f9f31fbf3dc276d2805c0/1-2.py">解</a>   </code><code>  </code></p>
+<p>第二題                     </p>
+<p><a href="https://redesigned-parakeet-97j77jg644x6fxqjg-8082.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/66cccb4938d0277b75f45ca9477bed32/raw/30d3eb8ab6842610bb7eb16e54c88d75b6ed9f86/2.py">解</a></p>
+<p>第三題</p>
+<p><a href="https://redesigned-parakeet-97j77jg644x6fxqjg-8082.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/89e04b459214c59cbb30058d2b0619a5/raw/1d9257d121d9881d7edf42cc455aefe74e26ccab/3.py">解</a></p>
+<p>第四題</p>
+<p><a href="https://redesigned-parakeet-97j77jg644x6fxqjg-8082.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/ea8b5631b09eed823c0d8e28d0677c9d/raw/d235de47f12b5bb71d1429877f5dbae5a242cf8b/4.py">解</a></p>
+<p>第五題</p>
+<p><a href="https://redesigned-parakeet-97j77jg644x6fxqjg-8082.app.github.dev/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/7e6998473444195273607f699411ea95/raw/7a476a7ba68aff2d9ab12432968d3bd4b47c6bab/5.py">解</a></p>
+<p><code>print()</code><span> </span>是 Python 的內建函數，用於將指定的內容輸出到控制台（標準輸出設備）。</p>
+<p>它可以輸出各種類型的數據，包括字串、數字、列表、字典等。</p>
+<p>詳細資料:<a href="https://realnewbie.com/coding/python/python-print/#ftoc-heading-2">https://realnewbie.com/coding/python/python-print/#ftoc-heading-2</a>                      </p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/7I43YZ78Gz4?si=1FRy25FLBUirwTCZ" title="YouTube video player" width="560"></iframe></p><br />w11_hw << <a href='w11_hw.html'>Previous</a> <a href='HW 2.html'>Next</a> >> HW 2</div>
         
     <!-- footer -->
       <div class="container">
