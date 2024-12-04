@@ -574,7 +574,7 @@ def print_pyramid(n):
 </table>
 </div>
 </div>
-<h2>w12</h2>
+<h2>w12_hw</h2>
 <p>第一題                  </p>
 <p><code>1-1<a href="https://mdecp2024.github.io/hw--ffwfggw/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/fd5e9e791f2e69e0fefc3392ddc20f5c/raw/503d28218226208ae03f9f31fbf3dc276d2805c0/1.py">解 </a> </code></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">input("你叫啥")</pre>
@@ -641,6 +641,46 @@ print (todays_menu) #列印今日菜單</pre>
 <p><code>print()</code><span> </span>是 Python 的內建函數，用於將指定的內容輸出到控制台（標準輸出設備）。</p>
 <p>它可以輸出各種類型的數據，包括字串、數字、列表、字典等。</p>
 <p>詳細資料:<a href="https://realnewbie.com/coding/python/python-print/#ftoc-heading-2">https://realnewbie.com/coding/python/python-print/#ftoc-heading-2</a>                      </p>
+<p></p><h2>w13_hw</h2>
+<p><a href="https://mdecp2024.github.io/hw--ffwfggw/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/adab16fe07d69aac80511ec476fb3c84/raw/61ff883b61b13e511e99830d6ec8bfa51ac2a986/1.py">上課題目</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html #導入html函式庫
+from browser import document as doc #導入document程式庫並在程式中命名(簡寫)為doc
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 400,height = 400) #將變數canvas指定為html.CANVAS(width = 400,height = 400) 
+#意思是建立*(準備)一個400*400的空間(畫布)
+brython_div = doc["brython_div1"] #將變數brython_div指定為doc["brython_div1"]
+brython_div &lt;= canvas #將canve指定為子元素加入倒brython_div中
+
+# 每一格的 pixel 數
+gs = 200 
+
+# gs*tc = canvas width and height
+
+ctx = canvas.getContext("2d") #將ctx指定(簡寫)為canvas.getContext("2d") (獲取畫布（canvas）的 2D 繪圖上下文 (context))
+width=1 #方形的寬
+height=1 #方形的高
+
+#第一個方形
+for i in range(width): 
+    for j in range(height):
+     #dRect(i*gs, j*gs, gs, gs, 1, "lightgrey")
+     ctx.lineWidth=1
+     ctx.strokeStyle='red'
+     ctx.beginPath();
+     ctx.rect(i*gs,j*gs,gs,gs)
+     ctx.stroke();
+     
+#第二個偏移的方形
+for i in range(width): 
+    for j in range(height):
+     #dRect(i*gs, j*gs, gs, gs, 1, "lightgrey")
+     ctx.lineWidth=1
+     ctx.strokeStyle='red'
+     ctx.beginPath();
+     ctx.rect(i*gs+100,j*gs+100,gs,gs)      #gs+100代表往右下偏移100像素
+     ctx.stroke();
+</pre>
 <p></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
