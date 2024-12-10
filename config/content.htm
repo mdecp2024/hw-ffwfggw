@@ -684,6 +684,162 @@ for i in range(width):
      ctx.rect(i*gs+100,j*gs+100,gs,gs)      #gs+100代表往右下偏移100像素
      ctx.stroke();
 </pre>
+<p>w13 作業:</p>
+<p>請在下列圖形中的兩個正方形外圍, 以黑色畫筆畫圓, 並設法在各線條所圍成的封閉區域塗上不同顏色. 操作過程請拍攝影片, 並在頁面中列出作業心得.</p>
+<p><a href="https://mdecp2024.github.io/hw-ffwfggw/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/d4108f2658da04e5a45cffd98273afcb/raw/5f138b460793491c17fd9ab0689d22408d814096/1.py">解</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+
+ctx = canvas.getContext("2d")
+ctx.lineWidth = 1  # 設定邊框線寬
+
+# 繪製對角線，顏色設定為藍色
+ctx.strokeStyle = 'blue'  # 設定對角線顏色為藍色
+ctx.beginPath()
+ctx.moveTo(20, 20)  # 調整起點位置
+ctx.lineTo(100, 100)  # 終點設為大正方形的右下角
+ctx.stroke()
+
+# 繪製外接圓，圓心位於第一個矩形的中央
+center_x1 = 20 + 80 / 2  # 第一個矩形的X中心
+center_y1 = 20 + 80 / 2  # 第一個矩形的Y中心
+
+# 半徑為第一個矩形對角線的一半
+radius1 = (80 * (2 ** 0.5)) / 2
+
+# 繪製外接圓
+ctx.strokeStyle = 'green'  # 設定圓的顏色為綠色
+ctx.beginPath()
+ctx.arc(center_x1, center_y1, radius1, 0, 2 * 3.14159)  # 圓心 (center_x1, center_y1) 和半徑
+ctx.stroke()
+
+# 繪製外接圓，圓心位於第二個矩形的中央
+center_x2 = 60 + 80 / 2  # 第二個矩形的X中心
+center_y2 = 60 + 80 / 2  # 第二個矩形的Y中心
+
+# 半徑為第二個矩形對角線的一半
+radius2 = (80 * (2 ** 0.5)) / 2
+
+# 繪製外接圓
+ctx.strokeStyle = 'purple'  # 設定圓的顏色為紫色
+ctx.beginPath()
+ctx.arc(center_x2, center_y2, radius2, 0, 2 * 3.14159)  # 圓心 (center_x2, center_y2) 和半徑
+ctx.stroke()
+
+# 繪製第一個矩形，並填充顏色
+ctx.fillStyle = 'yellow'  # 設定填充顏色為黃色
+ctx.strokeStyle = 'red'   # 設定邊框顏色為紅色
+
+ctx.rect(20, 20, 80, 80)  # 設定矩形的位置和大小，縮小為 80x80
+ctx.stroke()  # 繪製邊框
+ctx.beginPath()
+
+# 繪製第二個矩形
+ctx.strokeStyle = 'red'    # 設定邊框顏色為紅色
+ctx.beginPath()
+ctx.rect(60, 60, 80, 80)  # 設定第二個矩形的位置和大小，縮小為 60x60
+ctx.stroke()  # 繪製邊框
+
+# 填充圓形的區域，排除與正方形的重疊部分
+ctx.globalCompositeOperation = 'source-over'  # 設定為填充模式
+ctx.fillStyle = 'lightblue'  # 設定圓形內部填充顏色為淺藍色
+
+# 填充第一個圓形
+ctx.beginPath()
+ctx.arc(center_x1, center_y1, radius1, 0, 2 * 3.14159)
+ctx.fill()
+
+# 填充第二個圓形
+ctx.beginPath()
+ctx.arc(center_x2, center_y2, radius2, 0, 2 * 3.14159)
+ctx.fill()
+
+# 刪除圓形與正方形重疊的區域
+ctx.globalCompositeOperation = 'destination-out'  # 設定為刪除重疊區域模式
+
+# 刪除第一個圓與正方形重疊的區域
+ctx.beginPath()
+ctx.rect(20, 20, 80, 80)  # 第一個矩形區域
+ctx.fill()
+
+# 刪除第二個圓與正方形重疊的區域
+ctx.beginPath()
+ctx.rect(60, 60, 80, 80)  # 第二個矩形區域
+ctx.fill()
+
+# 填充重疊區域的顏色（位於兩個正方形重疊的區域）
+ctx.globalCompositeOperation = 'source-over'  # 恢復填充模式
+ctx.fillStyle = 'orange'  # 設定重疊區域填充顏色為橙色
+
+# 填充第一個矩形的內部
+ctx.globalCompositeOperation = 'source-over'  # 設定為填充模式
+ctx.fillStyle = 'lightyellow'  # 設定填充顏色
+ctx.beginPath()
+ctx.rect(20, 20, 80, 80)  # 第一個矩形區域
+ctx.fill()
+
+# 填充第二個矩形的內部
+ctx.fillStyle = 'orange'  # 設定填充顏色
+ctx.beginPath()
+ctx.rect(60, 60, 80, 80)  # 第二個矩形區域
+ctx.fill()
+
+# 填充第一個圓形和矩形之間的空白區域
+ctx.fillStyle = 'lightblue'  # 設定填充顏色
+ctx.beginPath()
+ctx.arc(center_x1, center_y1, radius1, 0, 2 * 3.14159)
+ctx.rect(20, 20, 80, 80)  # 使用複合模式
+ctx.globalCompositeOperation = 'destination-over'  # 填充背景模式
+ctx.fill()
+
+# 填充第二個圓形和矩形之間的空白區域
+ctx.fillStyle = 'pink'  # 設定填充顏色
+ctx.beginPath()
+ctx.arc(center_x2, center_y2, radius2, 0, 2 * 3.14159)
+ctx.rect(60, 60, 80, 80)  # 使用複合模式
+ctx.globalCompositeOperation = 'destination-over'
+ctx.fill()
+
+# 重置繪圖操作模式
+ctx.globalCompositeOperation = 'source-over'
+
+# 重疊區域填充
+ctx.beginPath()
+ctx.rect(60, 60, 40, 40)  # 重疊區域的範圍 (兩個矩形重疊部分)
+ctx.fill()
+
+# 重新繪製斜線，確保它在最上層
+ctx.strokeStyle = 'blue'  # 設定斜線顏色為藍色
+ctx.beginPath()
+ctx.moveTo(20, 20)
+ctx.lineTo(100, 100)  # 斜線終點設為大正方形的右下角
+ctx.stroke()
+
+# 最後繪製所有的邊框，確保線條不被遮蓋
+ctx.strokeStyle = 'red'   # 第一個矩形的邊框顏色
+ctx.beginPath()
+ctx.rect(20, 20, 80, 80)  # 第一個矩形的位置和大小
+ctx.stroke()
+
+ctx.strokeStyle = 'red'  # 第二個矩形的邊框顏色
+ctx.beginPath()
+ctx.rect(60, 60, 80, 80)  # 第二個矩形的位置和大小
+ctx.stroke()
+
+ctx.strokeStyle = 'black'  # 圓形邊框顏色
+ctx.beginPath()
+ctx.arc(center_x1, center_y1, radius1, 0, 2 * 3.14159)  # 第一個圓
+ctx.stroke()
+
+ctx.beginPath()
+ctx.arc(center_x2, center_y2, radius2, 0, 2 * 3.14159)  # 第二個圓
+ctx.stroke()</pre>
+<p><br/><br/></p>
 <p></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
@@ -692,8 +848,7 @@ for i in range(width):
 <p>PART 2: Introduction to lists and if/else statements</p>
 <p>PART 3: Introduction to the for loop</p>
 <p>完成上述流程整理後, 請將 HW2 自評分數輸入 cp2024 自評表單中.</p>
-<p></p>
-<h2>HW 2 Exam</h2>
+<p></p><h2>HW 2 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
 <p><br/><br/>w7</p>
