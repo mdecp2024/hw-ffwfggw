@@ -840,6 +840,186 @@ ctx.beginPath()
 ctx.arc(center_x2, center_y2, radius2, 0, 2 * 3.14159)  # 第二個圓
 ctx.stroke()</pre>
 <p><br/><br/></p>
+<p></p><h2>w14_ex</h2>
+<p><span>請根據兩個圓繪圖所圍成的</span><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/0e370b2ad0c429ab4c8905244022c27cfca8cfba/two_cicle_fill_ex1.py">區域</a><span>(目前圍成三個區域, 但若圓心移動可能彼此獨立)進行不同顏色著色, 條件是當各圓半徑與圓心座標變動時, 程式只需輸入兩個圓的圓心座標與半徑, 就可以完成各區域的著色任務.</span></p>
+<p><a href='https://mdecp2024.github.io/hw-ffwfggw/content/index.html&lt;script src="https://gist.github.com/ffwfggw/c0f7f883dd6084798afc750739d7a3af.js"&gt;&lt;/script&gt;'>解</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+import math
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=600, height=600)  # 调整画布大小以容纳圆形
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+
+ctx = canvas.getContext("2d")
+
+grid_size = 10
+ctx.lineWidth = 1
+
+# HTML 表单，用于用户输入圆心和半径
+def create_input_form():
+    # 创建表单元素
+    form_div = html.DIV(id="form-div")
+    form_div &lt;= html.H3("请输入圆心坐标和半径:")
+    
+    # 创建输入框和标签
+    form_div &lt;= html.LABEL("第一个圆心X坐标: ")
+    form_div &lt;= html.INPUT(id="circle1_center_x", value="200")  # 默认值200
+    form_div &lt;= html.BR()
+    
+    form_div &lt;= html.LABEL("第一个圆心Y坐标: ")
+    form_div &lt;= html.INPUT(id="circle1_center_y", value="200")  # 默认值200
+    form_div &lt;= html.BR()
+    
+    form_div &lt;= html.LABEL("第一个圆半径: ")
+    form_div &lt;= html.INPUT(id="circle1_radius", value="141.4")  # 默认值141.4
+    form_div &lt;= html.BR()
+    
+    form_div &lt;= html.LABEL("第二个圆心X坐标: ")
+    form_div &lt;= html.INPUT(id="circle2_center_x", value="300")  # 默认值300
+    form_div &lt;= html.BR()
+    
+    form_div &lt;= html.LABEL("第二个圆心Y坐标: ")
+    form_div &lt;= html.INPUT(id="circle2_center_y", value="300")  # 默认值300
+    form_div &lt;= html.BR()
+    
+    form_div &lt;= html.LABEL("第二个圆半径: ")
+    form_div &lt;= html.INPUT(id="circle2_radius", value="141.4")  # 默认值141.4
+    form_div &lt;= html.BR()
+
+    form_div &lt;= html.LABEL("第三个圆心X坐标: ")
+    form_div &lt;= html.INPUT(id="circle3_center_x", value="400")  # 默认值400
+    form_div &lt;= html.BR()
+
+    form_div &lt;= html.LABEL("第三个圆心Y坐标: ")
+    form_div &lt;= html.INPUT(id="circle3_center_y", value="400")  # 默认值400
+    form_div &lt;= html.BR()
+
+    form_div &lt;= html.LABEL("第三个圆半径: ")
+    form_div &lt;= html.INPUT(id="circle3_radius", value="141.4")  # 默认值141.4
+    form_div &lt;= html.BR()
+    
+    # 创建提交按钮
+    form_div &lt;= html.BUTTON("提交", id="submit-btn")
+    
+    brython_div &lt;= form_div
+
+# 获取用户输入的圆心和半径
+def get_user_input():
+    circle1_center_x = float(doc["circle1_center_x"].value)
+    circle1_center_y = float(doc["circle1_center_y"].value)
+    circle1_radius = float(doc["circle1_radius"].value)
+    
+    circle2_center_x = float(doc["circle2_center_x"].value)
+    circle2_center_y = float(doc["circle2_center_y"].value)
+    circle2_radius = float(doc["circle2_radius"].value)
+    
+    circle3_center_x = float(doc["circle3_center_x"].value)
+    circle3_center_y = float(doc["circle3_center_y"].value)
+    circle3_radius = float(doc["circle3_radius"].value)
+    
+    return (circle1_center_x, circle1_center_y, circle1_radius), (circle2_center_x, circle2_center_y, circle2_radius), (circle3_center_x, circle3_center_y, circle3_radius)
+
+# 画多个圆并填充区域
+def draw_circles_and_fill_regions(circle1_center, circle1_radius, circle2_center, circle2_radius, circle3_center, circle3_radius):
+    # 清除画布，防止重叠
+    ctx.clearRect(0, 0, 600, 600)
+    
+    # 绘制三个圆并填充其区域
+    ctx.strokeStyle = 'black'
+    
+    # 第一个圆
+    ctx.fillStyle = 'green'  # 第一个圆的填充颜色
+    ctx.beginPath()
+    ctx.arc(circle1_center[0], circle1_center[1], circle1_radius, 0, 2 * math.pi)
+    ctx.fill()  # 填充圆
+    ctx.stroke()
+
+    # 第二个圆
+    ctx.fillStyle = 'red'  # 第二个圆的填充颜色
+    ctx.beginPath()
+    ctx.arc(circle2_center[0], circle2_center[1], circle2_radius, 0, 2 * math.pi)
+    ctx.fill()  # 填充圆
+    ctx.stroke()
+
+    # 第三个圆
+    ctx.fillStyle = 'yellow'  # 第三个圆的填充颜色
+    ctx.beginPath()
+    ctx.arc(circle3_center[0], circle3_center[1], circle3_radius, 0, 2 * math.pi)
+    ctx.fill()  # 填充圆
+    ctx.stroke()
+
+    # 判断点是否在第一个圆内
+    def point_in_circle1(x, y):
+        cx, cy, r = circle1_center[0], circle1_center[1], circle1_radius
+        return (x - cx) ** 2 + (y - cy) ** 2 &lt; r ** 2
+
+    # 判断点是否在第二个圆内
+    def point_in_circle2(x, y):
+        cx, cy, r = circle2_center[0], circle2_center[1], circle2_radius
+        return (x - cx) ** 2 + (y - cy) ** 2 &lt; r ** 2
+    
+    # 判断点是否在第三个圆内
+    def point_in_circle3(x, y):
+        cx, cy, r = circle3_center[0], circle3_center[1], circle3_radius
+        return (x - cx) ** 2 + (y - cy) ** 2 &lt; r ** 2
+
+    # 根据区域确定颜色
+    def get_region_color(x, y):
+        # 判断点在哪些圆内
+        in_circle1 = point_in_circle1(x, y)
+        in_circle2 = point_in_circle2(x, y)
+        in_circle3 = point_in_circle3(x, y)
+
+        # 三个区域：
+        if in_circle1 and not in_circle2 and not in_circle3:
+            return 'green'  # 只在第一个圆内，填充绿色
+        elif in_circle2 and not in_circle1 and not in_circle3:
+            return 'red'  # 只在第二个圆内，填充红色
+        elif in_circle3 and not in_circle1 and not in_circle2:
+            return 'yellow'  # 只在第三个圆内，填充黄色
+        elif in_circle1 and in_circle2 and not in_circle3:
+            return 'blue'  # 在两个圆交集区域，填充蓝色
+        elif in_circle1 and in_circle3 and not in_circle2:
+            return 'purple'  # 在第一个和第三个圆交集区域，填充紫色
+        elif in_circle2 and in_circle3 and not in_circle1:
+            return 'orange'  # 在第二个和第三个圆交集区域，填充橙色
+        elif in_circle1 and in_circle2 and in_circle3:
+            return 'brown'  # 在三个圆交集区域，填充棕色
+        else:
+            return None  # 三个圆之外不填充
+
+    # 扫描并填充区域
+    def scan_and_draw():
+        for x in range(0, 600, grid_size):  # 遍历画布范围，左到右
+            for y in range(0, 600, grid_size):  # 从上到下
+                color = get_region_color(x, y)  # 获取当前点的区域颜色
+                if color:  # 只有当颜色不为 None 时才绘制
+                    # 绘制填充的矩形
+                    ctx.fillStyle = color
+                    ctx.fillRect(x, y, grid_size, grid_size)  # 填充一个区域的矩形，而不是小圆点
+
+    # 开始扫描并绘制颜色
+    scan_and_draw()
+
+# 创建输入表单
+create_input_form()
+
+# 设置点击提交按钮的事件
+def on_submit(event):
+    # 获取用户输入的圆心坐标和半径
+    circle1_center, circle2_center, circle3_center = get_user_input()
+
+    # 调用函数绘制圆并填充区域
+    draw_circles_and_fill_regions(
+        circle1_center[0:2], circle1_center[2],
+        circle2_center[0:2], circle2_center[2],
+        circle3_center[0:2], circle3_center[2]
+    )
+
+# 绑定点击提交按钮事件
+doc["submit-btn"].bind("click", on_submit)</pre>
 <p></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
