@@ -1049,17 +1049,116 @@ print("從 1 累加到 100 的總和是:", total)
 <p>PART 2: Introduction to lists and if/else statements</p>
 <p>PART 3: Introduction to the for loop</p>
 <p>完成上述流程整理後, 請將 HW2 自評分數輸入 cp2024 自評表單中.</p>
-<p></p><h2>HW 2 Exam</h2>
-<p>每六人為一組進行協同程式練習</p>
-<p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<p><br/><br/><br/></p><h1>HW 3</h1>
+<p></p><h3>HW 2 Exam</h3>
+<h3>w16_exam1</h3>
+<p>請在個人網頁標題為 "HW 2 Exam" 頁面之後, 加上一個第三階的頁面, 標題為 "w16_exam1".</p>
+<p>並在 "w16_exam1" 頁面中完成下列隨堂考試的要求 (20%):</p>
+<p>本項任務必須拍攝過程操作影片, 且<span>片頭要先切換到個人的課程網頁 "About" 頁面, 顯示操作者的學號與個人網頁連結</span>.</p>
+<p>題目: 請以<span>自己的學號最後四碼</span>作為繪圖的座標原點, (例如: 若學號最後四碼為 3932, 請將 (39, 32) 作為繪圖座標原點), 並以 pixel=2 的黑色直線分別利用 Brython 繪圖, 標示出向右為正的 X 軸, 以及向下為正的 Y 軸, 並且利用文字標示出原點座標 (例如: (39, 32)), 之後請自選最左側圖形的起始點座標, 直接在頁面畫出下列圖像, 繪圖程式除了必須直接列在頁面 html 檔案外, 也請存入自己的 Gist 區域, 並在所完成的圖像下方, 以自選標題的 anchor 連結至 Gist, 讓使用者點擊該連結後, 可以在各自的 Brython 頁面中繪出下列圖像 (<a href="https://www.ccplusmedia.com/wp-content/uploads/2019/10/creative-ad_landscape3.jpg">圖片來源</a>).</p>
+<p><a href="https://mdecp2024.github.io/hw-ffwfggw/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/3b1b046958d45ff25187296ac626575b/raw/71f0192671db9f7e6d3db1d67300a0a832cb5044/1.py">答</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document, html
+import math
+ 
+# 初始化 HTML，確保 canvas 元素存在
+def setup_canvas():
+    if not document.querySelector("#my_canvas"):
+        canvas = html.CANVAS(id="my_canvas", width=800, height=600)
+        document &lt;= canvas
+ 
+setup_canvas()
+
+# Set up canvas
+canvas = document["my_canvas"]
+ctx = canvas.getContext("2d")
+
+# Set origin (32, 16)
+origin_x, origin_y = 32, 16    #自己學號 修改
+
+# Draw X-axis
+ctx.beginPath()
+ctx.moveTo(origin_x, origin_y)
+ctx.lineTo(500, origin_y)
+ctx.strokeStyle = "black"
+ctx.lineWidth = 2
+ctx.stroke()
+
+# Draw Y-axis
+ctx.beginPath()
+ctx.moveTo(origin_x, origin_y)
+ctx.lineTo(origin_x, 300)
+ctx.stroke()
+
+# Label origin
+ctx.font = "12px Arial"
+ctx.fillStyle = "black"
+ctx.fillText("(32, 16)", origin_x + 5, origin_y - 5)
+
+# Draw shapes
+# Adjusted placement to fix alignment issue
+
+# Hexagon (Orange)
+hex_x, hex_y = 100, 100
+ctx.beginPath()
+for i in range(6):
+    angle = i * (2 * math.pi / 6)
+    x = hex_x + 30 * math.cos(angle)
+    y = hex_y + 30 * math.sin(angle)
+    if i == 0:
+        ctx.moveTo(x, y)
+    else:
+        ctx.lineTo(x, y)
+ctx.closePath()
+ctx.fillStyle = "orange"
+ctx.fill()
+
+# Diamond (Teal)
+ctx.beginPath()
+ctx.moveTo(160, 70)
+ctx.lineTo(180, 100)
+ctx.lineTo(160, 130)
+ctx.lineTo(140, 100)
+ctx.closePath()
+ctx.fillStyle = "teal"
+ctx.fill()
+
+# Triangle (Teal)
+ctx.beginPath()
+ctx.moveTo(165, 130)
+ctx.lineTo(205, 130)
+ctx.lineTo(185, 100)
+ctx.closePath()
+ctx.fillStyle = "blue"
+ctx.fill()
+
+# Circle (Pink)
+ctx.beginPath()
+ctx.arc(230, 100, 30, 0, 2 * math.pi)
+ctx.fillStyle = "pink"
+ctx.fill()
+
+# Square (Yellow)
+ctx.beginPath()
+ctx.rect(265, 75, 50, 50)
+ctx.fillStyle = "yellow"
+ctx.fill()
+
+# Rectangle (Blue)
+ctx.beginPath()
+ctx.rect(320, 90, 60, 20)
+ctx.fillStyle = "Blue"
+ctx.fill()</pre>
+<p></p><h1>HW 3</h1>
 <h4>主題: Python 的數字、演算法與迴圈 (20%)</h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 4 and Part 5</p>
-<p>完成上述流程整理後, 請將 HW3 自評分數輸入 cp2024 自評表單中.</p>
-<h2>HW 3 Exam</h2>
+<p>完成上述流程整理後, 請將 HW3 自評分數輸入 cp2024 自評表單中.</p><h2>HW 3 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 3 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<h1>HW 4</h1>
+<h3>w16_exam2</h3>
+<p>請在個人網頁標題為 "HW 3 Exam" 頁面之後, 加上一個第三階的頁面, 標題為 "w16_exam2".</p>
+<p>並在 "w16_exam2" 頁面中完成下列隨堂考試的要求 (20%):</p>
+<p>本項任務必須拍攝過程操作影片, 且<span>片頭要先切換到個人的課程網頁 "About" 頁面, 顯示操作者的學號與個人網頁連結</span>.</p>
+<p>題目一: 請以<span>自己的學號最後四碼</span>作為下列繪圖的左上方點座標, (例如: 若學號最後四碼為 3932, 請將 (39, 32) 作為繪圖左上方點座標), 並以紅色文字標示出該點座標 (例如: (39, 32)), 之後請利用<span> </span><span>pixel=2 的藍色直線</span>,<span> </span><span>自訂迷宮畫布大小</span>, 直接在頁面畫出下列圖像, 繪圖程式除了必須直接列在頁面 html 檔案外, 也請存入自己的 Gist 區域, 並在所完成的圖像下方, 以自選標題的 anchor 連結至 Gist, 讓使用者點擊該連結後, 可以在各自的 Brython 頁面中繪出下列圖像).</p>
+<p>答</p><h1>HW 4</h1>
 <h4>主題: 利用 Python 控制機電模擬系統 (20%)</h4>
 <p style="padding-left: 30px;">利用 <a href="https://solvespace.com/">https://solvespace.com/</a> 建立機械系統零組件</p>
 <p style="padding-left: 30px;">利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</p>
@@ -1067,8 +1166,7 @@ print("從 1 累加到 100 的總和是:", total)
 <p style="padding-left: 30px;">範例:</p>
 <p style="padding-left: 60px;"><a href="/downloads/cd2023_pj3ag4_zmq_football_4.7.7z">cd2023_pj3ag4_zmq_football_4.7.7z</a></p>
 <p style="padding-left: 60px;"><a href="https://localhost:9446/downloads/cd2024_2b_g6_steel_ball_platform_nxopen_copsim.7z">cd2024_2b_g6_steel_ball_platform_nxopen_copsim.7z</a></p>
-<p>完成上述流程整理後, 請將 HW4 自評分數輸入 cp2024 自評表單中.</p>
-<h2>HW 4 Exam</h2>
+<p>完成上述流程整理後, 請將 HW4 自評分數輸入 cp2024 自評表單中.</p><h2>HW 4 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 4 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
 <h1>Final Report</h1>
