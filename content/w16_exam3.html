@@ -141,77 +141,168 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">HW 1 Exam << <a href='HW 1 Exam.html'>Previous</a> <a href='w4.html'>Next</a> >> w4<br /><h1>w10</h1>
-<p>第一題</p>
-<p><span>操作概要： 這部影片中使用了五種不同的方式去執行金字塔程式，模擬了在不同環境下去執行的方式與輸出的結果 心得： 在過程中我發現執行一個程式不是只有一種方法，各種模式有不同的優缺點，但是在用jupyter的過程我發現會報錯，應該是解壓縮不完全回去再試試看</span></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/hYRQx_X7xVw?si=jlGQ6FlX9loMulz5" title="YouTube video player" width="560"></iframe></p>
-<p></p>
-<p>第二題</p>
-<p>１.<strong><span>只能包含字母、數字和底線</span><code>_</code></strong><span>：變數名稱只能包含</span><code>a-z</code><span>、</span><code>A-Z</code><span>、</span><code>0-9</code><span>和</span><code>_</code><span>，不能包含空格或其他符號。</span></p>
-<p><strong><span>    大小寫敏感</span></strong><span>：Python是大小寫敏感的語言，</span><code>myVariable</code><span>並且</span><code>myvariable</code><span>是兩個不同的變數名稱。</span></p>
-<p><span>    <strong>不得以數字開頭</strong>：變數中後可有數字，但不得做為開頭。</span></p>
-<p><span></span></p>
-<p><span>2.避免<strong>使用Python關鍵字</strong><code>if</code>：關鍵字（keywords）是Python語言保留的單詞，具有特殊意義，不能作為變數名稱。</span></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/yznfiDx6XNw?si=g9B7ZltSPxMuQ9lD" title="YouTube video player" width="560"></iframe></p>
-<p>第三題</p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/5pSJF5Fk3Ws?si=vl-bpRRdLxLdT_7O" title="YouTube video player" width="560"></iframe></p>
-<div id="tipue_search_content">
-<p>以下方程式列印採用 <a href="https://www.mathjax.org/#gettingstarted">Mathjax Version 3 格式</a>.</p>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<h4>set1 - Physics</h4>
-<p><span style="background-color: #ccffcc;">Use python to solve the problem: A jet touches down at velocity 310 km/h. Find the constant acceleration required to stop the aircraft 1000 m down the runway.</span></p>
-<p style="padding-left: 30px;">To solve this problem, we'll use the kinematic equations of motion under constant acceleration. The question asks for the constant acceleration required to stop the jet after a certain distance, which means we are looking for the deceleration.</p>
-<p style="padding-left: 30px;">Step 1: Problem Breakdown</p>
-<p style="padding-left: 30px;">We are given:<br/>- Initial velocity \( v_0 = 310 \, \text{km/h} \)<br/>- Final velocity \( v = 0 \, \text{m/s} \) (since the jet stops)<br/>- Distance \( d = 1000 \, \text{m} \)</p>
-<p style="padding-left: 30px;">We are asked to find the constant acceleration \( a \) that brings the jet to a stop.</p>
-<p style="padding-left: 30px;">Step 2: Kinematic Equation</p>
-<p style="padding-left: 30px;">The appropriate kinematic equation for this problem, where the object is decelerating (i.e., stopping), is:</p>
-<p style="padding-left: 30px;">\[<br/>v^2 = v_0^2 + 2ad<br/>\]</p>
-<p style="padding-left: 30px;">Where:<br/>- \( v \) is the final velocity (which is 0 since the jet stops),<br/>- \( v_0 \) is the initial velocity,<br/>- \( a \) is the constant acceleration (which we need to solve for),<br/>- \( d \) is the distance traveled.</p>
-<p style="padding-left: 30px;">Step 3: Solving for Acceleration \( a \)</p>
-<p style="padding-left: 30px;">Rearranging the equation to solve for \( a \):</p>
-<p style="padding-left: 30px;">\[<br/>a = \frac{v^2 - v_0^2}{2d}<br/>\]</p>
-<p style="padding-left: 30px;">Since \( v = 0 \), this simplifies to:</p>
-<p style="padding-left: 30px;">\[<br/>a = \frac{-v_0^2}{2d}<br/>\]</p>
-<p style="padding-left: 30px;">Step 4: Converting Units</p>
-<p style="padding-left: 30px;">The velocity \( v_0 = 310 \, \text{km/h} \) needs to be converted to meters per second (m/s) because the distance is in meters and we want the acceleration in meters per second squared (m/s²).</p>
-<p style="padding-left: 30px;">\[<br/>v_0 = 310 \, \text{km/h} = \frac{310 \times 1000}{3600} \, \text{m/s} = 86.11 \, \text{m/s}<br/>\]</p>
-<p style="padding-left: 30px;">Step 5: Substituting Known Values</p>
-<p style="padding-left: 30px;">Now we can substitute the values into the equation:</p>
-<p style="padding-left: 30px;">\[<br/>a = \frac{-(86.11)^2}{2 \times 1000}<br/>\]</p>
-<p style="padding-left: 30px;">Let's calculate this using Python.</p>
-<p style="padding-left: 30px;">Python Code Implementation: <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/d9558707c7e1765c1e6885ddc6919e32265c6d23/problem-set1-1_py.txt">problem-set1-1.py</a></p>
-<p style="padding-left: 30px;"></p>
-<p style="padding-left: 30px;">Use function to solve this kind of problem. <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/9567804babcc2fa9edc32403d76dcf2af4955bcf/problem-set1-2_py.txt">problem-set1-2.py</a></p>
-<p style="padding-left: 30px;">Extend to be more general to solve all kind of these problems. <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/9567804babcc2fa9edc32403d76dcf2af4955bcf/problem-set1-3_py.txt">problem-set1-3.py</a></p>
-<h4>set2- Calculus</h4>
-<p><span style="background-color: #ccffcc;">Under ideal conditions a certain bacteria population is known to double every three hours. Suppose that there are initially 100 bacteria. When will the population first reach 50,000 ?</span></p>
-<p style="padding-left: 30px;">We are asked to determine when a bacteria population, starting at 100 bacteria, will first reach 50,000, given that the population doubles every 3 hours.</p>
-<p style="padding-left: 30px;">Exponential Growth Equation:</p>
-<p style="padding-left: 30px;">The population growth can be modeled by the exponential growth formula:</p>
-<p style="padding-left: 30px;">\[<br/>P(t) = P_0 \times 2^{\frac{t}{T}}<br/>\]</p>
-<p style="padding-left: 30px;">Where:<br/>- \( P(t) \) is the population at time \( t \),<br/>- \( P_0 \) is the initial population,<br/>- \( T \) is the doubling time (in hours),<br/>- \( t \) is the time elapsed (in hours).</p>
-<p style="padding-left: 30px;">Given:<br/>- \( P_0 = 100 \) (initial population),<br/>- \( T = 3 \) hours (doubling time),<br/>- \( P(t) = 50,000 \) (target population).</p>
-<p style="padding-left: 30px;">Step 1: Plugging in the known values</p>
-<p style="padding-left: 30px;">We want to find the time \( t \) when the population reaches 50,000. Substituting the known values into the growth equation:</p>
-<p style="padding-left: 30px;">\[<br/>50,000 = 100 \times 2^{\frac{t}{3}}<br/>\]</p>
-<p style="padding-left: 30px;">Step 2: Simplifying the equation</p>
-<p style="padding-left: 30px;">First, divide both sides by 100 to isolate the exponential term:</p>
-<p style="padding-left: 30px;">\[<br/>500 = 2^{\frac{t}{3}}<br/>\]</p>
-<p style="padding-left: 30px;">Step 3: Solving for \( t \)</p>
-<p style="padding-left: 30px;">To solve for \( t \), take the logarithm (base 2) of both sides of the equation:</p>
-<p style="padding-left: 30px;">\[<br/>\log_2(500) = \frac{t}{3}<br/>\]</p>
-<p style="padding-left: 30px;">Now, multiply both sides by 3 to solve for \( t \):</p>
-<p style="padding-left: 30px;">\[<br/>t = 3 \times \log_2(500)<br/>\]</p>
-<p style="padding-left: 30px;">Step 4: Change of Base Formula</p>
-<p style="padding-left: 30px;">To compute \( \log_2(500) \) in Python or any other programming language, we can use the change of base formula:</p>
-<p style="padding-left: 30px;">\[<br/>\log_2(x) = \frac{\log_{10}(x)}{\log_{10}(2)}<br/>\]</p>
-<p style="padding-left: 30px;">Thus, the equation for \( t \) becomes:</p>
-<p style="padding-left: 30px;">\[<br/>t = 3 \times \frac{\log_{10}(500)}{\log_{10}(2)}<br/>\]</p>
-<p style="padding-left: 30px;">Python Code to Calculate \( t \): <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/d9558707c7e1765c1e6885ddc6919e32265c6d23/problem-set2-1_py.txt">problem-set2-1.py</a></p>
-<p></p>
-</div>
-<br />HW 1 Exam << <a href='HW 1 Exam.html'>Previous</a> <a href='w4.html'>Next</a> >> w4</div>
+    <div id="tipue_search_content">HW 4 Exam << <a href='HW 4 Exam.html'>Previous</a> <a href='Final Report.html'>Next</a> >> Final Report<br /><h1>w16_exam3</h1>
+<p>請在個人網頁標題為 "HW 4 Exam" 頁面之後, 加上一個第三階的頁面, 標題為 "w16_exam3".</p>
+<p>並在 "w16_exam3" 頁面中完成下列隨堂考試的要求 (20%):</p>
+<p>本項任務必須拍攝過程操作影片, 且<span>片頭要先切換到個人的課程網頁 "About" 頁面, 顯示操作者的學號與個人網頁連結</span>.</p>
+<p>題目一: 請以<span>自己的學號最後四碼</span>作為下列繪圖的左上方點座標, (例如: 若學號最後四碼為 3932, 請將 (39, 32) 作為繪圖左上方點座標), 並以紅色文字標示出該點座標 (例如: (39, 32)), 之後請利用<span> </span><span>pixel=2 的黑色直線</span>,<span> </span><span>自訂迷宮畫布大小</span>, 直接在頁面畫出下列圖像, 並且<span>利用紅色連續線段標示從上方入口, 走至下方出口的路線圖</span>.</p>
+<p>繪圖程式除了必須直接列在頁面 html 檔案外, 也請存入自己的 Gist 區域, 並在所完成的圖像下方, 以自選標題的 anchor 連結至 Gist, 讓使用者點擊該連結後, 可以在各自的 Brython 頁面中繪出下列圖像).</p>
+<p><a href="https://mdecp2024.github.io/hw-ffwfggw/content/Brython.html?src=https://gist.githubusercontent.com/ffwfggw/3b1b046958d45ff25187296ac626575b/raw/f21005ac37d907d488d9feeb4ba92478a7521e6b/3.py">答</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+import math
+ 
+ 
+def draw_maze(angle_degrees):
+    # 创建和添加画布
+    canvas = html.CANVAS(width=1200, height=1200)
+    brython_div = doc["brython_div1"]
+    brython_div &lt;= canvas
+ 
+    # 获取绘图上下文
+    ctx = canvas.getContext("2d")
+ 
+    # 设置绘图参数
+    pixel_scale = 100
+    offset_x = 32 * 2
+    offset_y = 16 * 2
+    # 整体向右移动的偏移量
+    move_right_offset = 200
+    angle_radians = math.radians(angle_degrees)
+ 
+    # 定义迷宫线条
+    lines = [
+        ((0, 0), (1, 0)),
+        ((2, 0), (5, 0)),
+        ((5, 0), (5, 5)),
+        ((3, 5), (5, 5)),
+        ((4, 5), (4, 3)),
+        ((2, 3), (4, 3)),
+        ((1, 3), (1, 5)),
+        ((3, 3), (3, 2)),
+        ((0, 0), (0, 5)),
+        ((0, 5), (2, 5)),
+        ((2, 5), (2, 4)),
+        ((2, 4), (3, 4)),
+        ((0, 2), (1, 2)),
+        ((2, 2), (2, 1)),
+        ((0, 1), (4, 1)),
+        ((4, 1), (4, 2)),
+    ]
+ 
+    # 旋转并绘制迷宫线条
+    ctx.strokeStyle = "blue"
+    ctx.lineWidth = 2
+    for line in lines:
+        start = line[0]
+        end = line[1]
+ 
+        # 旋转起点坐标
+        start_x_rotated = start[0] * pixel_scale * math.cos(angle_radians) - start[1] * pixel_scale * math.sin(
+            angle_radians)
+        start_y_rotated = start[0] * pixel_scale * math.sin(angle_radians) + start[1] * pixel_scale * math.cos(
+            angle_radians)
+ 
+        # 旋转终点坐标
+        end_x_rotated = end[0] * pixel_scale * math.cos(angle_radians) - end[1] * pixel_scale * math.sin(
+            angle_radians)
+        end_y_rotated = end[0] * pixel_scale * math.sin(angle_radians) + end[1] * pixel_scale * math.cos(
+            angle_radians)
+ 
+        ctx.beginPath()
+        ctx.moveTo(
+            offset_x + move_right_offset + start_x_rotated,
+            offset_y + start_y_rotated
+        )
+        ctx.lineTo(
+            offset_x + move_right_offset + end_x_rotated,
+            offset_y + end_y_rotated
+        )
+        ctx.stroke()
+ 
+    return ctx, offset_x + move_right_offset, offset_y, pixel_scale
+ 
+ 
+def find_path():
+    # 简单的路径示例，这里假设的路径，实际需要更复杂的算法
+    # 为了维持原本迷宫路线，这里路径假设不破坏迷宫已有路线
+    path = [
+        ((1.5, 0), (1.5, 0.5)),
+        ((1.5, 0.5), (4.5, 0.5)),
+        ((4.5, 0.5), (4.5, 2.5)),
+        ((4.5, 2.5), (3.5, 2.5)),
+        ((3.5, 2.5), (3.5, 1.5)),
+        ((3.5, 1.5), (2.5, 1.5)),
+        ((2.5, 1.5), (2.5, 2.5)),
+        ((2.5, 2.5), (1.5, 2.5)),
+        ((1.5, 2.5), (1.5, 3.5)),
+        ((1.5, 3.5), (3.5, 3.5)),
+        ((3.5, 3.5), (3.5, 4.5)),
+        ((3.5, 4.5), (2.5, 4.5)),
+        ((2.5, 4.5), (2.5, 5))
+    ]
+    return path
+ 
+ 
+def draw_path(ctx, offset_x, offset_y, angle_degrees, path, pixel_scale):
+    angle_radians = math.radians(angle_degrees)
+    ctx.strokeStyle = "red"
+    ctx.lineWidth = 2
+    for line in path:
+        start = line[0]
+        end = line[1]
+ 
+        # 旋转起点坐标
+        start_x_rotated = start[0] * pixel_scale * math.cos(angle_radians) - start[1] * pixel_scale * math.sin(
+            angle_radians)
+        start_y_rotated = start[0] * pixel_scale * math.sin(angle_radians) + start[1] * pixel_scale * math.cos(
+            angle_radians)
+ 
+        # 旋转终点坐标
+        end_x_rotated = end[0] * pixel_scale * math.cos(angle_radians) - end[1] * pixel_scale * math.sin(
+            angle_radians)
+        end_y_rotated = end[0] * pixel_scale * math.sin(angle_radians) + end[1] * pixel_scale * math.cos(
+            angle_radians)
+ 
+        ctx.beginPath()
+        ctx.moveTo(
+            offset_x + start_x_rotated,
+            offset_y + start_y_rotated
+        )
+        ctx.lineTo(
+            offset_x + end_x_rotated,
+            offset_y + end_y_rotated
+        )
+        ctx.stroke()
+ 
+ 
+def label_coordinate(ctx, offset_x, offset_y, text_angle_degrees):
+    text_angle_radians = math.radians(text_angle_degrees)
+    ctx.font = "18px Arial"
+    ctx.fillStyle = "red"
+    # 原始文本位置
+    original_x = offset_x + 10
+    original_y = offset_y - 15
+    # 旋转后的文本位置
+    rotated_x = original_x * math.cos(text_angle_radians) - original_y * math.sin(text_angle_radians)
+    rotated_y = original_x * math.sin(text_angle_radians) + original_y * math.cos(text_angle_radians)
+    ctx.save()
+    ctx.translate(offset_x, offset_y)
+    ctx.rotate(text_angle_radians)
+    ctx.fillText("(32, 16)", 10, - 15)
+    ctx.restore()
+ 
+ 
+if __name__ == "__main__":
+    # 调整迷宫角度，这里设置为30度，可以根据需要修改
+    maze_angle = 0
+    # 文本角度
+    text_angle = 0
+    ctx, offset_x, offset_y, pixel_scale = draw_maze(maze_angle)
+    path = find_path()
+    draw_path(ctx, offset_x, offset_y, maze_angle, path, pixel_scale)
+    label_coordinate(ctx, offset_x, offset_y, text_angle)</pre>
+<p></p><br />HW 4 Exam << <a href='HW 4 Exam.html'>Previous</a> <a href='Final Report.html'>Next</a> >> Final Report</div>
         
     <!-- footer -->
       <div class="container">
